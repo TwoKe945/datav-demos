@@ -43,6 +43,7 @@ onMounted(() => {
   //     format: "image/jpeg",
   //     tileMatrixSetID: "GoogleMapsCompatible"
   // }));
+if (import.meta.env.VITE_TD_KEY) {
   // 矢量地图
   viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
     url: "http://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk="+webKey,
@@ -58,14 +59,14 @@ onMounted(() => {
     style: "default",
     format: "image/jpeg",
     tileMatrixSetID: "GoogleMapsCompatible"
-}));
-modifyMap(viewer, {
-    //反色?
-    invertColor: true,
-    //滤色值
-    filterRGB: [3,148,123],
-});
-
+  }));
+  modifyMap(viewer, {
+      //反色?
+      invertColor: true,
+      //滤色值
+      filterRGB: [3,148,123],
+  });
+}
 
   /**
    * viewer.camera.position
