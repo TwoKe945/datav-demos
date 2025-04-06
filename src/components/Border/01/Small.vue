@@ -7,7 +7,7 @@ const { width, height } = toRefs(domSize)
 
 defineExpose({ refreshLayoutSize });
 
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   topDecoration?: boolean,
   topDecorationWidth?: number,
   reverse?: boolean,

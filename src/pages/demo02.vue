@@ -7,13 +7,13 @@ import 'echarts-gl';
 
 const options = ref({})
 // 渐变色生成函数
-function createAreaGradient(start: string, end: string): graphic.LinearGradient {
-  return new graphic.LinearGradient(0, 0, 0, 1, [
-    { offset: 0, color: start },
-    { offset: 0.7, color: end + 'dd' },
-    { offset: 1, color: end + '55' }
-  ], false);
-}
+// function createAreaGradient(start: string, end: string): graphic.LinearGradient {
+//   return new graphic.LinearGradient(0, 0, 0, 1, [
+//     { offset: 0, color: start },
+//     { offset: 0.7, color: end + 'dd' },
+//     { offset: 1, color: end + '55' }
+//   ], false);
+// }
 
 function createBorderGradient(): graphic.LinearGradient {
   return new graphic.LinearGradient(0, 0, 1, 0, [

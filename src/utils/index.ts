@@ -8,7 +8,7 @@ export function modifyMap(viewer: Cesium.Viewer, options: any) {
     baseLayer.gamma = options.gamma || 0.3
     baseLayer.hue = options.hue || 1
     baseLayer.saturation = options.saturation || 0
-    const baseFragShader = (viewer.scene.globe)._surfaceShaderSet
+    const baseFragShader = (viewer.scene.globe as any)._surfaceShaderSet
         .baseFragmentShaderSource.sources
     for (let i = 0; i < baseFragShader.length; i++) {
         const strS = 'color = czm_saturation(color, textureSaturation);\n#endif\n'

@@ -13,7 +13,7 @@ import cesium from 'vite-plugin-cesium';
 
 // https://vite.dev/config/
 export default ({ mode }: any) => {
-  const env = loadEnv(mode, process.cwd());
+  loadEnv(mode, process.cwd());
   return defineConfig({
   resolve: {
     alias: {
