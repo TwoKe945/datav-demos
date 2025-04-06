@@ -1,0 +1,8 @@
+[
+  {
+    "name": "XXXX数据管理后台",
+    "description": "基于Vue3 + Echarts + Cesium的数据可视化大屏",
+    "images": ["/datav/01.png"],
+    "path": "/examples/datav/01"
+  }
+]
