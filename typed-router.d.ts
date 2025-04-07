@@ -24,6 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/demo04': RouteRecordInfo<'/demo04', '/demo04', Record<never, never>, Record<never, never>>,
     '/demo05': RouteRecordInfo<'/demo05', '/demo05', Record<never, never>, Record<never, never>>,
     '/demo06': RouteRecordInfo<'/demo06', '/demo06', Record<never, never>, Record<never, never>>,
+    '/demo07': RouteRecordInfo<'/demo07', '/demo07', Record<never, never>, Record<never, never>>,
     '/examples/datav/01/': RouteRecordInfo<'/examples/datav/01/', '/examples/datav/01', Record<never, never>, Record<never, never>>,
     '/examples/datav/01/components/Chart01/CirclePoint': RouteRecordInfo<'/examples/datav/01/components/Chart01/CirclePoint', '/examples/datav/01/components/Chart01/CirclePoint', Record<never, never>, Record<never, never>>,
     '/examples/datav/01/components/Chart02/Panel1': RouteRecordInfo<'/examples/datav/01/components/Chart02/Panel1', '/examples/datav/01/components/Chart02/Panel1', Record<never, never>, Record<never, never>>,
