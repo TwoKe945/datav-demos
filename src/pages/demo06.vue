@@ -6,7 +6,7 @@ import * as echarts from 'echarts'
 const options = ref({})
 
 onMounted(() => {
-  axios.get('/city/china.json').then(res => {
+  axios.get('/geojson/china.json').then(res => {
     echarts.registerMap('china',  res.data);
     console.log(res.data)
     options.value = {
