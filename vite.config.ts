@@ -4,6 +4,7 @@ import Jsx from '@vitejs/plugin-vue-jsx'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import DevTools from 'vite-plugin-vue-devtools'
 import Icons from 'unplugin-icons/vite'
 import IconResolver from 'unplugin-icons/resolver'
@@ -31,7 +32,10 @@ export default ({ mode }: any) => {
     UnoCSS(),
     AutoImport({
       imports: ['vue', 'vue-router', '@vueuse/core'],
-      dts: 'src/types/auto-import.d.ts'
+      dts: 'src/types/auto-import.d.ts',
+      resolvers: [
+        ElementPlusResolver()
+      ]
     }),
     Components({
       dirs: ['src/components'],
@@ -43,6 +47,7 @@ export default ({ mode }: any) => {
           prefix: 'icon',
           enabledCollections: ['mdi', 'ep'],
         }),
+        ElementPlusResolver(),
         {
           type: 'component',
           resolve: (name) => {

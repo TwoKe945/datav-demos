@@ -4,5 +4,11 @@
     "description": "基于Vue3 + Echarts + Cesium的数据可视化大屏",
     "images": ["/datav/01.png"],
     "path": "/examples/datav/01"
+  },
+  {
+    "name": "渝中区Echarts地图实践大屏",
+    "description": "基于Vue3 + Echarts图表 + Echarts地图的数据可视化大屏",
+    "images": ["/datav/02.png"],
+    "path": "/examples/datav/02"
   }
 ]
