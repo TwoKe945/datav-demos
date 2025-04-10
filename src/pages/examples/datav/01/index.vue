@@ -138,34 +138,5 @@ const { nowTimeText } = useTime()
   }
 }
 
-.highlight-border {
-  position: relative;
-  width: 200px;
-  height: 100px;
-  border: 2px solid #333;
-  overflow: hidden;
-}
-
-.highlight-border::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 60px;
-  height: 200%;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255,255,255,0.5) 50%,
-    transparent 100%
-  );
-  transform: rotate(45deg);
-  animation: flowLight 2s infinite; /* 循环动画 */
-}
-
-@keyframes flowLight {
-  from { left: -50%; }
-  to { left: 150%; }
-}
 
 </style>

@@ -11,6 +11,7 @@ declare module 'vue' {
     BasicChart: typeof import('./../components/BasicChart/index.vue')['default']
     Border01: typeof import('./../components/Border/01/Index.vue')['default']
     Border01Small: typeof import('./../components/Border/01/Small.vue')['default']
+    Border02: typeof import('./../components/Border/02/Index.vue')['default']
     DataVBorderBox7: typeof import('@kjgl77/datav-vue3')['BorderBox7']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

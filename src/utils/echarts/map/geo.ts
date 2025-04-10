@@ -18,7 +18,6 @@ export function createBoundaries(features: any) {
       if (feature.geometry.type === 'MultiPolygon') {
           feature.geometry.coordinates.forEach((polygon: [number,number][][]) => {
             if (!polygon || polygon.length === 0) return
-            console.log(polygon)
             polygon[0].forEach((point: [number,number], index: number) => {
                 if (index > 0) {
                     boundaries.push([
@@ -28,6 +27,19 @@ export function createBoundaries(features: any) {
                 }
             });
           });
+      } else if (feature.geometry.type === 'Polygon') {
+        feature.geometry.coordinates.forEach((polygon: [number,number][]) => {
+          if (!polygon || polygon.length === 0) return
+          console.log(polygon)
+          polygon.forEach((point: [number,number], index: number) => {
+            if (index > 0) {
+              boundaries.push([
+                  { coord: point }, // 当前点
+                  { coord: polygon[index - 1] } // 上一个点
+              ]);
+            }
+          })
+        });
       }
   });
   return boundaries;
@@ -121,7 +133,9 @@ export function createPseudo3DMapGeo(option: CreatePseudo3DMapOption) {
     return 0
   }
 
+
   return Array.from({ length: count }, (_, i) => {
+    console.log(`${top + offsetY * (i + 1)}%`, `${left + offsetX * (i + 1)}%`)
     const config = merge({
       type: 'map',
       z: z + i,

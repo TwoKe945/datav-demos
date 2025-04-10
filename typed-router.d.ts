@@ -24,11 +24,14 @@ declare module 'vue-router/auto-routes' {
     '/demo04': RouteRecordInfo<'/demo04', '/demo04', Record<never, never>, Record<never, never>>,
     '/demo05': RouteRecordInfo<'/demo05', '/demo05', Record<never, never>, Record<never, never>>,
     '/demo06': RouteRecordInfo<'/demo06', '/demo06', Record<never, never>, Record<never, never>>,
-    '/demo07': RouteRecordInfo<'/demo07', '/demo07', Record<never, never>, Record<never, never>>,
+    '/echarts/demo01': RouteRecordInfo<'/echarts/demo01', '/echarts/demo01', Record<never, never>, Record<never, never>>,
+    '/echarts/demo02': RouteRecordInfo<'/echarts/demo02', '/echarts/demo02', Record<never, never>, Record<never, never>>,
+    '/echarts/demo03': RouteRecordInfo<'/echarts/demo03', '/echarts/demo03', Record<never, never>, Record<never, never>>,
     '/examples/datav/01/': RouteRecordInfo<'/examples/datav/01/', '/examples/datav/01', Record<never, never>, Record<never, never>>,
     '/examples/datav/01/components/Chart01/CirclePoint': RouteRecordInfo<'/examples/datav/01/components/Chart01/CirclePoint', '/examples/datav/01/components/Chart01/CirclePoint', Record<never, never>, Record<never, never>>,
     '/examples/datav/01/components/Chart02/Panel1': RouteRecordInfo<'/examples/datav/01/components/Chart02/Panel1', '/examples/datav/01/components/Chart02/Panel1', Record<never, never>, Record<never, never>>,
     '/examples/datav/01/components/Chart02/Panel2': RouteRecordInfo<'/examples/datav/01/components/Chart02/Panel2', '/examples/datav/01/components/Chart02/Panel2', Record<never, never>, Record<never, never>>,
     '/examples/datav/01/components/Chart02/Panel3': RouteRecordInfo<'/examples/datav/01/components/Chart02/Panel3', '/examples/datav/01/components/Chart02/Panel3', Record<never, never>, Record<never, never>>,
+    '/examples/datav/02/': RouteRecordInfo<'/examples/datav/02/', '/examples/datav/02', Record<never, never>, Record<never, never>>,
   }
 }
