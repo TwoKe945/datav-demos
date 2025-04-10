@@ -5,7 +5,6 @@ import { useResize } from '~/composables/useResize';
 const { autoBindRef, domSize } = useResize();
 const { width, height } = toRefs(domSize)
 const webKey = import.meta.env.VITE_TD_KEY
-import { modifyMap  } from '~/utils'
 
 onMounted(() => {
   //初始化cesium实例
@@ -27,14 +26,16 @@ onMounted(() => {
   // 最大缩放高度（米）
   viewer.scene.screenSpaceCameraController.maximumZoomDistance = 5000000;
   (window as any).viewer = viewer;
+ 
+if (import.meta.env.VITE_TD_KEY) {
   // 影像地图
-  // viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
-  //   url: "http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk="+webKey,
-  //         layer: "tdtBasicLayer",
-  //         style: "default",
-  //         format: "image/jpeg",
-  //         tileMatrixSetID: "GoogleMapsCompatible"
-  // }));
+  viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+    url: "http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk="+webKey,
+          layer: "tdtBasicLayer",
+          style: "default",
+          format: "image/jpeg",
+          tileMatrixSetID: "GoogleMapsCompatible"
+  }));
   // 影像地图标注
   // viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
   //   url: "http://t0.tianditu.com/cia_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk="+webKey,
@@ -43,30 +44,80 @@ onMounted(() => {
   //     format: "image/jpeg",
   //     tileMatrixSetID: "GoogleMapsCompatible"
   // }));
-if (import.meta.env.VITE_TD_KEY) {
-  // 矢量地图
-  viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
-    url: "http://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk="+webKey,
-    layer: "tdtVecBasicLayer",
-    style: "default",
-    format: "image/jpeg",
-    tileMatrixSetID: "GoogleMapsCompatible"
-  }));
-  // 矢量地图标注
-  viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
-  url: "http://t0.tianditu.com/cva_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cva&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk="+webKey,
-    layer: "tdtAnnoLayer",
-    style: "default",
-    format: "image/jpeg",
-    tileMatrixSetID: "GoogleMapsCompatible"
-  }));
-  modifyMap(viewer, {
-      //反色?
-      invertColor: true,
-      //滤色值
-      filterRGB: [3,148,123],
-  });
+  // // 矢量地图
+  // viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+  //   url: "http://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk="+webKey,
+  //   layer: "tdtVecBasicLayer",
+  //   style: "default",
+  //   format: "image/jpeg",
+  //   tileMatrixSetID: "GoogleMapsCompatible"
+  // }));
+  // // 矢量地图标注
+  // viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+  // url: "http://t0.tianditu.com/cva_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cva&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk="+webKey,
+  //   layer: "tdtAnnoLayer",
+  //   style: "default",
+  //   format: "image/jpeg",
+  //   tileMatrixSetID: "GoogleMapsCompatible"
+  // }));
+  // modifyMap(viewer, {
+  //     //反色?
+  //     invertColor: true,
+  //     //滤色值
+  //     filterRGB: [3,148,123],
+  // });
 }
+
+  let addRoadLayer = () => {
+      Cesium.GeoJsonDataSource.load('/geojson/roads/500103.json', {
+          stroke: Cesium.Color.YELLOW.withAlpha(0.6),//多边形或线的颜色 
+          strokeWidth: 1,//多边形或线 宽度
+          clampToGround:true//多边形或线 固定在地面上true/false 
+      }).then((dataSource) => {
+          viewer.dataSources.add(dataSource).then(data => {
+              console.log("加载路网返回的数据", data)
+          })
+      })
+    }
+    let addWaterLayer = () => {
+      Cesium.GeoJsonDataSource.load('/geojson/water/500103.json', {
+          fill: Cesium.Color.BLUE.withAlpha(0.6),//多边形或线的颜色 
+          // strokeWidth: 1,//多边形或线 宽度
+          clampToGround:true//多边形或线 固定在地面上true/false 
+      }).then((dataSource) => {
+          viewer.dataSources.add(dataSource).then(data => {
+              console.log("加载路网返回的数据", data)
+          })
+      })
+    }
+
+    let addRoadwaysLayer = () => {
+      Cesium.GeoJsonDataSource.load('/geojson/roadways/500103.json', {
+          stroke: Cesium.Color.RED.withAlpha(0.6),//多边形或线的颜色 
+          strokeWidth: 1,//多边形或线 宽度
+          clampToGround:true//多边形或线 固定在地面上true/false 
+      }).then((dataSource) => {
+          viewer.dataSources.add(dataSource).then(data => {
+              console.log("加载路网返回的数据", data)
+          })
+      })
+    }
+
+    let addBoundsLayer = () => {
+      Cesium.GeoJsonDataSource.load('/geojson/500103.json', {
+          fill: Cesium.Color.GREEN.withAlpha(0.6),//多边形或线的颜色 
+          // strokeWidth: 1,//多边形或线 宽度
+          clampToGround:true//多边形或线 固定在地面上true/false 
+      }).then((dataSource) => {
+          viewer.dataSources.add(dataSource).then(data => {
+              console.log("加载路网返回的数据", data)
+          })
+      })
+    }
+    addBoundsLayer()
+    addRoadLayer()
+    addWaterLayer()
+    addRoadwaysLayer()
 
   /**
    * viewer.camera.position
@@ -74,21 +125,21 @@ if (import.meta.env.VITE_TD_KEY) {
       viewer.camera.pitch
       viewer.camera.roll
     */
-    viewer.camera.flyTo({
-      destination: {
-        "x": -1584114.2883945717,
-        "y": 5331886.361413893,
-        "z": 3134093.3347557406
+    // viewer.camera.flyTo({
+    //   destination: {
+    //     "x": -1584114.2883945717,
+    //     "y": 5331886.361413893,
+    //     "z": 3134093.3347557406
+    //   } as any,
+    //   duration: 5
+    // })
+    viewer.camera.setView({
+      // destination: Cesium.Cartesian3.fromDegrees(116.435314, 40.960521, 1500),
+      destination:  {
+          "x": -1584114.2883945717,
+          "y": 5331886.361413893,
+          "z": 3134093.3347557406
       } as any,
-      duration: 5
-    })
-  //   viewer.camera.setView({
-  //     // destination: Cesium.Cartesian3.fromDegrees(116.435314, 40.960521, 1500),
-  //     destination:  {
-  //         "x": -1584114.2883945717,
-  //         "y": 5331886.361413893,
-  //         "z": 3134093.3347557406
-  //     } as any,
   //     orientation: {
   //         // 指向
   //         heading: 6.283185307179581,
@@ -96,7 +147,7 @@ if (import.meta.env.VITE_TD_KEY) {
   //         pitch: -1.5688168484696687,
   //         roll: 0.0
   //     }
-  // });
+  });
 
 })
 </script>

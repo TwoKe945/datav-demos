@@ -27,7 +27,7 @@ function handleClickItem(example: Example) {
     <el-carousel :interval="4000" type="card" style="width: 100%;" height="450px">
       <el-carousel-item v-for="(example, index) in examples" :key="index">
         <div :title="example.path" @click="handleClickItem(example)"
-        class="bg-[#000] gap-2 cursor-pointer flex flex-col justify-center items-center border-1 border-solid p-2 h-[450px]">
+        class="bg-[#000000] gap-2 cursor-pointer flex flex-col justify-center items-center border-1 border-solid p-2 h-[450px]">
           <img class="w-[640px] h-[360px]":src="`/images/examples/${ example.images[0] }`" />
           <div class="font-mono font-size-[20px] font-bold  color-[#eee]">{{ example.name }}</div>
           <div class="font-mono font-size-[13px] color-[#eee]">{{ example.description }}</div>

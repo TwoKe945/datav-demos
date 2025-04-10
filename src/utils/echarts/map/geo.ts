@@ -123,7 +123,7 @@ export function createPseudo3DMapGeo(option: CreatePseudo3DMapOption) {
   const offsetY = option.offsetY || 0.25
   const type = option.type || 'border'
 
-  function color(i: number) {
+  function color(_i: number) {
     if (type === 'border') return 'transparent'
     return 'transparent'
   }

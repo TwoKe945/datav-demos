@@ -14,8 +14,8 @@ const assets = inject('assets') as Ref<AssetsData[]>
 
 let count = 4;
 
-watch(() => assets.value, (val) => {
-  const instance = chartRef.value.instance() as echarts.Echarts
+watch(() => assets.value, (_val) => {
+  const instance = chartRef.value.instance() as any
   if (--count == 0) {
     instance.setOption({
       series: [

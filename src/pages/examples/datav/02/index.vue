@@ -4,7 +4,7 @@ import Header from './components/Header.vue'
 import Map from './components/Map.vue'
 import Chart01 from './components/Chart01.vue'
 import Chart02 from './components/Chart02.vue'
-import type { AssetsData, AssetsType, AssetsName } from './components/types'
+import type { AssetsData } from './components/types'
 
 const assets  = ref<AssetsData[]>([])
 

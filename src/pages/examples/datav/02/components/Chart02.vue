@@ -9,8 +9,8 @@ const assets = inject("assets")
 
 
 let count = 4;
-watch(() => assets.value, (val) => {
-  const instance = chartRef.value.instance() as echarts.Echarts
+watch(() => (assets as any).value, (_val) => {
+  const instance = chartRef.value.instance() as any
   if (--count == 0) {
     instance.setOption({
       series: createDataSeries()
@@ -20,8 +20,8 @@ watch(() => assets.value, (val) => {
   deep: true
 })
 
-let features = []
-let names = []
+let features: any[] = []
+let names: string[] = []
 
 const colorMap = {
   zk_hospital: ['rgba(37,146,255)', 'rgba(37,146,255,.3)'],
@@ -31,13 +31,13 @@ const colorMap = {
 }
 
 function createDate(type: string) {
-  const color = colorMap[type];
+  const color = (colorMap as any)[type];
   
   return {
-        name: ASSETS_TYPE[type],
+        name: (ASSETS_TYPE as any)[type],
         type: 'bar',
         stack: 'total',
-        data: names.map(name => namesCount[name][type]),
+        data: (names as any).map((name: any) => (namesCount as any)[name][type]),
         itemStyle: {
           color: {
             type: 'linear',
@@ -55,8 +55,8 @@ function createDate(type: string) {
           show: true,
           color: '#fff',
           fontSize: 8,
-          formatter: (params) => {
-            return Math.round(params.value / namesCount[params.name].count * 1000) / 10 + '%'
+          formatter: (params: any) => {
+            return Math.round(params.value / (namesCount as any)[params.name].count * 1000) / 10 + '%'
           }
         }
       }
@@ -64,16 +64,16 @@ function createDate(type: string) {
 
 const namesCount = {};
 function createDataSeries() {
-  names.forEach(name => {
-    namesCount[name] = {count: 0};
-    const polygon = turf.polygon(features[name].geometry.coordinates);
-    assets.value.forEach(item => {
+  (names as any).forEach((name: any) => {
+    (namesCount as any)[name] = {count: 0} as any;
+    const polygon = turf.polygon((features as any)[name].geometry.coordinates);
+    (assets as any).value.forEach((item: any) => {
       if (turf.booleanPointInPolygon(turf.point([item.lon, item.lat]), polygon)) {
-        namesCount[name].count++;
-        if (!namesCount[name][item.type]){
-          namesCount[name][item.type] = 0;
+        (namesCount as any)[name].count++;
+        if (!(namesCount as any)[name][item.type]){
+          (namesCount as any)[name][item.type] = 0;
         }
-        namesCount[name][item.type]++;
+        (namesCount as any)[name][item.type]++;
       }
     })
   })
@@ -87,7 +87,7 @@ function createDataSeries() {
 
 onMounted(async () => {
   const resp = await axios.get('/geojson/500103.json')
-  features = resp.data.features.reduce((config, item) => {
+  features = resp.data.features.reduce((config: any, item: any) => {
     config[item.properties.name] = item
     return config
   },{})

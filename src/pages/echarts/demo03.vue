@@ -2,7 +2,7 @@
 import * as echarts from 'echarts'
 import axios from 'axios'
 const options = ref({})
-import { projection, createPseudo3DMapGeo, createBoundaries, createTexture, createMapTextureGeo ,createBoundariesSeriesAnimation } from '~/utils'
+import { projection, createPseudo3DMapGeo, createBoundaries ,createBoundariesSeriesAnimation } from '~/utils'
 
 onMounted(async () => {
   // const texture = createTexture({
@@ -97,7 +97,7 @@ onMounted(async () => {
         coordinateSystem: 'geo',
         geoIndex: 0,
         z: 23,
-        renderItem: function (params: echarts.CustomSeriesRenderItemAPI, api: echarts.CustomSeriesRenderItemAPI) {
+        renderItem: function (_params: echarts.CustomSeriesRenderItemAPI, api: echarts.CustomSeriesRenderItemAPI) {
           const [x, y] = api.coord([105.2897590000000037,32.2011869999999973]);
           const [endX, endY] = api.coord([110.1988759999999985,28.1613390000000017]);
           console.log(x, y);

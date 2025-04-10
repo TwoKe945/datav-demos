@@ -7,26 +7,26 @@ const assets = inject("assets")
 const props = defineProps<{
   type: 'school' | 'hospital'
 }>()
-function groupBy(data: [], generateKey: (item) => string) {
+function groupBy(data: [], generateKey: (item: any) => string) {
   const result = {}
   data.forEach(item => {
     const key = generateKey(item);
-    if (!result[key]){
-      result[key] = 0;
+    if (!(result as any)[key]){
+      (result as any)[key] = 0;
     }
-    result[key]++;
+    (result as any)[key]++;
   })
   return result;
 }
 
 const name = '资源占比';
 let count = 4;
-watch(() => assets.value, (val) => {
-  const instance = chartRef.value.instance() as echarts.Echarts
+watch(() => (assets as any).value, (_val) => {
+  const instance = chartRef.value.instance() as any
   if (--count == 0) {
     
-  const result = groupBy(assets.value, item => item.type);
-  const data = Object.keys(result).filter(item => item.endsWith(props.type)).map(item => ({name: ASSETS_TYPE[item], value: result[item]}))
+  const result = groupBy((assets as any).value, item => item.type);
+  const data = Object.keys(result).filter(item => item.endsWith(props.type)).map(item => ({name: (ASSETS_TYPE as any)[item], value: (result as any)[item]}))
     instance.setOption({
       series: [
         {
@@ -42,8 +42,8 @@ watch(() => assets.value, (val) => {
 
 onMounted(() => {
 
-  const result = groupBy(assets.value, item => item.type);
-  const data = Object.keys(result).filter(item => item.endsWith(props.type)).map(item => ({name: ASSETS_TYPE[item], value: result[item]}))
+  const result = groupBy((assets as any).value, item => item.type);
+  const data = Object.keys(result).filter(item => item.endsWith(props.type)).map(item => ({name: (ASSETS_TYPE as any)[item], value: (result as any)[item]}))
 
   options.value = {
     backgroundColor: 'transparent',

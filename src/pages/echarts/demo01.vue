@@ -1,7 +1,6 @@
 <script lang='ts' setup>
 import * as echarts from 'echarts'
 import axios from 'axios'
-import { union, featureCollection } from '@turf/turf'
 const options = ref({})
 import { projection, createPseudo3DMapGeo, createBoundaries, createTexture, createMapTextureGeo ,createBoundariesSeriesAnimation } from '~/utils'
 

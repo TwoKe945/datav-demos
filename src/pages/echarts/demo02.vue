@@ -35,11 +35,11 @@ onMounted(async () => {
       '朝天门街道': [106.582124, 29.566141],
       '大溪沟街道': [106.556568, 29.564107],
     }
-    let convertData = function (data: GeoMapData[]) {
+    let convertData = function (data: any[]) {
         // 处理数据函数
       let res = []
       for (let i = 0; i < data.length; i++) {
-        let geoCoord = geoCoordMap[data[i].name]
+        let geoCoord = (geoCoordMap as any)[data[i].name]
         if (geoCoord) {
           res.push({
             name: data[i].name,
