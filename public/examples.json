@@ -10,5 +10,11 @@
     "description": "基于Vue3 + Echarts图表 + Echarts地图的数据可视化大屏",
     "images": ["/datav/02.png"],
     "path": "/examples/datav/02"
+  },
+  {
+    "name": "渝中区Leaflet地图实践",
+    "description": "基于Vue3 + Leaflet地图案列，解决高德地图偏移问题以及水域贴图瓦片",
+    "images": ["/leaflet/demo01.png"],
+    "path": "/leaflet/demo01"
   }
 ]

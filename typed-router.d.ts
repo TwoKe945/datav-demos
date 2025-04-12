@@ -33,5 +33,6 @@ declare module 'vue-router/auto-routes' {
     '/examples/datav/01/components/Chart02/Panel2': RouteRecordInfo<'/examples/datav/01/components/Chart02/Panel2', '/examples/datav/01/components/Chart02/Panel2', Record<never, never>, Record<never, never>>,
     '/examples/datav/01/components/Chart02/Panel3': RouteRecordInfo<'/examples/datav/01/components/Chart02/Panel3', '/examples/datav/01/components/Chart02/Panel3', Record<never, never>, Record<never, never>>,
     '/examples/datav/02/': RouteRecordInfo<'/examples/datav/02/', '/examples/datav/02', Record<never, never>, Record<never, never>>,
+    '/leaflet/demo01': RouteRecordInfo<'/leaflet/demo01', '/leaflet/demo01', Record<never, never>, Record<never, never>>,
   }
 }

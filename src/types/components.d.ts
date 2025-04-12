@@ -13,6 +13,7 @@ declare module 'vue' {
     Border01Small: typeof import('./../components/Border/01/Small.vue')['default']
     Border02: typeof import('./../components/Border/02/Index.vue')['default']
     DataVBorderBox7: typeof import('@kjgl77/datav-vue3')['BorderBox7']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     RouterLink: typeof import('vue-router')['RouterLink']

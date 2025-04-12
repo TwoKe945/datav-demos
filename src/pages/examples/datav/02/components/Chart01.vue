@@ -8,13 +8,13 @@ const props = defineProps<{
   type: 'school' | 'hospital'
 }>()
 function groupBy(data: [], generateKey: (item: any) => string) {
-  const result = {}
+  const result = {} as any
   data.forEach(item => {
     const key = generateKey(item);
-    if (!(result as any)[key]){
-      (result as any)[key] = 0;
+    if (!result[key]){
+      result[key] = 0;
     }
-    (result as any)[key]++;
+    result[key]++;
   })
   return result;
 }

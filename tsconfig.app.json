@@ -13,10 +13,12 @@
     "types": [
       "unplugin-vue-router/client",
       "unplugin-icons/types/vue3",
+      "leaflet"
     ],
     "paths": {
       "~/*": ["./src/*"]
     }
   },
+  "exclude": ["src/**/*.js"],
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
